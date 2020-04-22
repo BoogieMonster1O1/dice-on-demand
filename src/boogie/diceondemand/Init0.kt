@@ -1,7 +1,10 @@
 package boogie.diceondemand
 
-public class Init0{
-    fun main(){
-        println("Dice on Demand is starting...")
+class Init0{
+    companion object{
+        @JvmStatic
+        fun main(args: Array<String>){
+            UIController()
+        }
     }
 }

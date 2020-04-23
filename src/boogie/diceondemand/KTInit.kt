@@ -2,7 +2,7 @@ package boogie.diceondemand
 
 import java.util.*
 
-class KTInit() {
+class KTInit {
     companion object{
         @JvmStatic
         fun main(args: Array<String>){

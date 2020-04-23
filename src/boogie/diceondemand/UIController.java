@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UIController{
-
     JFrame frame = new JFrame();
     JLabel heading = new JLabel("Dice on Demand");
     JButton clicker = new JButton("Roll");

@@ -1,6 +1,6 @@
 package boogie.diceondemand
 
-class Init0{
+class KTInit{
     companion object{
         @JvmStatic
         fun main(args: Array<String>){

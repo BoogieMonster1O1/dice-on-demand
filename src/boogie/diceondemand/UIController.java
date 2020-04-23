@@ -17,7 +17,6 @@ public class UIController{
     JLabel heading = new JLabel("Dice on Demand");
     JButton clicker = new JButton("Roll");
     JTextField field = new JTextField("6");
-    JLabel temp = new JLabel(field.getText());
 
     public UIController(){
 
@@ -44,12 +43,19 @@ public class UIController{
         clicker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String text = fieldtext.getText();
-                int text_one = Integer.parseInt(temp.getText());
-                float randnum = obj.randomnumber(text_one);
-                int intrandnum = Math.toIntExact(Math.round((randnum)));
-                JOptionPane.showOptionDialog(frame,"The Dice rolls " + intrandnum,"The Dice has rolled!!", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,null,null);
+                try{
+                    JLabel temp = new JLabel(field.getText());
+                    String text = fieldtext.getText();
+                    int text_one = Integer.parseInt(temp.getText());
+                    float randnum = obj.randomnumber(text_one);
+                    int intrandnum = Math.toIntExact(Math.round((randnum)));
+                    if (intrandnum == 0) intrandnum = 1;
+                    JOptionPane.showOptionDialog(frame,"The Dice rolls " + intrandnum,"The Dice has rolled!!", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,null,null);
 
+                }
+                catch(Exception exception){
+                    JOptionPane.showOptionDialog(frame,"Illegal Number Format","java.lang.NumberFormatException", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,null,null);
+                }
             }
         });
         clicker.setBackground(Color.CYAN);

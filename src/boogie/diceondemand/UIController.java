@@ -4,13 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintStream;
 
 public class UIController{
+
+    PrintStream a = new PrintStream(System.out);
+
+    KTInit obj = new KTInit();
+
     JFrame frame = new JFrame();
     JLabel fieldtext = new JLabel("Faces on Dice:-");
     JLabel heading = new JLabel("Dice on Demand");
     JButton clicker = new JButton("Roll");
     JTextField field = new JTextField("6");
+    JLabel temp = new JLabel(field.getText());
 
     public UIController(){
 
@@ -19,10 +26,10 @@ public class UIController{
         fieldtext.setBounds(105,190,240,30);
         field.setBounds(150,220,150,30);
 
-        heading.setFont(new java.awt.Font("Arial", Font.BOLD,28));
-        clicker.setFont(new java.awt.Font("Arial", Font.BOLD,24));
-        field.setFont(new java.awt.Font("Arial", Font.PLAIN,18));
-        fieldtext.setFont(new java.awt.Font("Arial", Font.PLAIN,18));
+        heading.setFont(new Font("Arial", Font.BOLD,28));
+        clicker.setFont(new Font("Arial", Font.BOLD,24));
+        field.setFont(new Font("Arial", Font.PLAIN,18));
+        fieldtext.setFont(new Font("Arial", Font.PLAIN,18));
 
         frame.add(field);
         frame.add(clicker);
@@ -34,10 +41,15 @@ public class UIController{
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         clicker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String text = fieldtext.getText();
+                int text_one = Integer.parseInt(temp.getText());
+                float randnum = obj.randomnumber(text_one);
+                int intrandnum = Math.toIntExact(Math.round((randnum)));
+                JOptionPane.showOptionDialog(frame,"The Dice rolls " + intrandnum,"The Dice has rolled!!", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,null,null);
+
             }
         });
         clicker.setBackground(Color.CYAN);
